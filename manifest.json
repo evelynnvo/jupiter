@@ -1,0 +1,13 @@
+{
+  "name": "New Tab thing",
+  "version": "0.1",
+  "description": "A minimalist new-tab override extension that tells the weather",
+  "manifest_version": 2,
+  "chrome_url_overrides" : {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "geolocation",
+    "storage"
+  ]
+}

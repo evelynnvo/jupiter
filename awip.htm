@@ -1,0 +1,273 @@
+﻿
+<!DOCTYPE html>
+<title>New Tab</title>
+<head>
+
+</head>
+
+
+<style>
+  body
+  {
+   background: white;
+  }
+ .sidebar {
+    height: 400px;
+    width: 250px;
+    left: 900px;
+    background: black;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+  }
+  #clock {
+    text-align: center;
+    font-family: consolas;
+    font-size: 20px;
+    color: white;
+    position: relative;
+    top: -100px;
+    
+  }
+  #date {
+    text-align: center;
+    font-family: consolas;
+    font-size: 20px;
+    color: white;
+    position: relative;
+    top: -80px;
+  }
+  #dayOfTheWeek {
+    text-align: center;
+    font-family: consolas;
+    font-size: 20px;
+    color: white;
+  }
+  #dayOfTheMonth {
+    text-align: center;
+    font-family: consolas;
+    font-size: 100px;
+    color: white;
+    position: relative;
+    top: -50px;
+  }
+  #month {
+    text-align: center;
+    font-family: consolas;
+    font-size: 20px;
+    color: white;
+    position: relative;
+    top: -100px; 
+ }
+
+  .links {
+   position: relative;
+   top: -480px;
+   left: -212px;
+   z-index: -1;
+    /*margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;*/
+  }
+
+  #link1 {
+  background: rgb(219, 197, 217);
+  height: 25px;
+  width: 53px;
+  margin: 10px;
+  position: relative;
+  left: 180px;
+  -webkit-transition: left 2s;
+  transition: left 2s;
+  }
+  #link1:hover {
+  left: 145px;
+  }
+ #link2 {
+  background: rgb(255, 189, 181);
+  height: 25px;
+  width: 120px;
+  margin: 10px;
+  position: relative;
+  left: 180px;
+  -webkit-transition: left 2s;
+  transition: left 2s;
+ }
+  #link2:hover {
+  left: 77px;
+  }
+ #link3 {
+  background: rgb(255, 252, 173);
+  height: 25px;
+  width: 150px;
+  margin: 10px;
+  position: relative;
+  left: 180px;
+  -webkit-transition: left 2s;
+  transition: left 2s;
+  }
+  #link3:hover {
+  left: 50px;
+  }
+ li {
+  list-style-type: none;
+  padding: 4px 0px 4px 6px;
+ }
+ a {
+  color: rgba(66, 66, 66, 0);
+  text-decoration: none;
+  font-family: consolas;
+  -webkit-transition: color 2s;
+  transition: color 2s;
+ }
+ #link1:hover a {
+  color: rgba(66, 66, 66, 1);
+ }
+ #link2:hover a {
+  color: rgba(66, 66, 66, 1);
+ }
+ #link3:hover a {
+  color: rgba(66, 66, 66, 1);
+ }
+
+  .tooltip {
+   position: absolute;
+   display: inline-block;
+   background: rgb(206, 237, 235);
+   width: 25px;
+   height: 25px;
+   left: 245px;
+   margin: 10px;
+   top: -10px;
+   
+ }
+ .tooltip .tooltiptext {
+    
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    left: 0%;
+    opacity: 0;
+    -webkit-transition: opacity 2s, left 1s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 1.5s, left 1s;
+    
+ }
+
+ .tooltip:hover .tooltiptext {
+   opacity: 1;
+   left: 130%;
+ }
+</style>
+
+
+
+<body onload = "startTime()">
+  <div class="sidebar">
+
+  <p id="dayOfTheWeek">
+   <script>
+   var n = new Date();
+   var d = n.getDay();
+   var days = new Array();
+	days[0] = "Sunday";
+	days[1] = "Monday";
+	days[2] = "Tuesday";
+	days[3] = "Wednesday";
+	days[4] = "Thursday";
+	days[5] = "Friday";
+	days[6] = "Saturday";
+   d = days[d];
+   document.getElementById("dayOfTheWeek").innerHTML = d;
+   </script>
+  </p>
+  <p id="dayOfTheMonth">
+   <script>
+   var n = new Date();
+   var d = n.getDate();
+   document.getElementById("dayOfTheMonth").innerHTML = d;
+   </script>
+   </p>
+   <p id="month">
+   <script>
+   var n = new Date();
+   var m = n.getMonth();
+   var months = new Array();
+   months[0] = "January";
+   months[1] = "February";
+   months[2] = "March";
+   months[3] = "April";
+   months[4] = "May";
+   months[5] = "June";
+   months[6] = "July";
+   months[7] = "August";
+   months[8] = "September";
+   months[9] = "October";
+   months[10] = "November";
+   months[11] = "December";
+   m = months[m];
+   document.getElementById("month").innerHTML = m;
+   </script>
+   </p>
+  <p id="date">
+   <script>
+   var n = new Date();
+   var y = n.getFullYear();
+   var m = n.getMonth() + 1;
+   var d = n.getDate();
+   m = checkTime(m);
+   d = checkTime(d);
+   document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+   function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+   }
+  </script>
+  </p>
+   <p id="clock">
+   <script>
+   function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById("clock").innerHTML = "{" + h + ":" + m + ":" + s + "}";
+    var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+    if (i < 10) {i = "0" + i};
+    return i;
+    }
+   </script>
+   </p>
+	 
+  
+ <div class="links">
+	
+	  <div id="link1"><li><a href="https://mail.google.com/mail/u/0/#inbox">Gmail</a></li></div>
+	  <div id="link2"><li><a href="#">Google Drive</a></li></div>
+	  <div id="link3"><li><a href="#">Google Translate</a></li></div>
+	
+ </div>
+
+<div class="tooltip">
+	<span class="tooltiptext">note1</span>
+</div>
+</div>
+
+
+
+</body>
