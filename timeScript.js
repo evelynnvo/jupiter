@@ -13,15 +13,48 @@ var quill = new Quill('#note-1', {
         ['bold', 'italic', 'underline', 'strike']
       ]
   },
-    placeholder: 'Start typing...',
+    placeholder: '  Penny for your thoughts?',
     theme: 'bubble'
 }); 
+
+
+chrome.storage.sync.get(["noteText"], function(noteText){
+  if(noteText["noteText"] != undefined) {
+      quill.setContents(noteText["noteText"]);
+    }
+});
+
+document.addEventListener('visibilitychange', function(){
+    chrome.storage.sync.get(["noteText"], function(items){
+      quill.setContents(items["noteText"]);
+  });
+});
+
+window.addEventListener('focus', function() {
+    chrome.storage.sync.get(["noteText"], function(items){
+      quill.setContents(items["noteText"]);
+  });
+});
+
+var timer;
+var ms = 200; // milliseconds
+
+quill.on('text-change', function(delta, source) {
+  clearTimeout(timer);
+  timer = setTimeout(function() {
+    var sourceDelta;
+    if (source === 'api') {
+      return;
+    }
+    sourceDelta = quill.getContents();
+    chrome.storage.sync.set({ "noteText": sourceDelta }, function(){});
+  }, ms);   
+});
 
 
   document.getElementById('btn-1').onclick = function() { bringUpNote('note-1', 'box-1'); }
   // document.getElementById('btn-2').onclick = function() { bringUpNote('note-2', 'box-2'); }
   // document.getElementById('btn-3').onclick = function() { bringUpNote('note-3', 'box-3'); }
-  // document.getElementById('btn-4').onclick = function() { bringUpNote('note-4', 'box-4'); }
   document.getElementById('btn-4').onclick = function() { setColor();  }
 
 function initialize() {
