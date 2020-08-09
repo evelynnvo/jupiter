@@ -14,7 +14,6 @@ body {
   overflow: hidden;
 }
 
-
 .weather-container {
   margin-top: 28vh; /*20em;*/
 }
@@ -87,14 +86,13 @@ body {
   overflow: hidden;
 }
 
-.note-box {
-  position: absolute;
+.note-box.ql-container.ql-bubble {
+  /*position: absolute;*/
   background: white;
   width: 20em;
   height: 25em;
-  margin-top: 2em;
+  margin-top: 20em;
   border-radius: .8em;
-  transform: translateY(20em);
   transition: transform 1s;
   transition-timing-function: ease-in-out;
   left: 0;
@@ -103,6 +101,11 @@ body {
   margin-right: auto;
   padding: 1.5em .5em;
 }
+
+.ql-editor {
+  margin-left: 0;
+}
+
 
 textarea {
   outline: none;
