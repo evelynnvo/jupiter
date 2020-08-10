@@ -5,7 +5,7 @@ var boxes = ["box-1", "box-2", "box-3"];
 var bgColors = ["#fff6a6", "#b7caf7", "#e4d3f0", "#a0dba1", "#ffe4b5", "#e3b0af", "black"]; //white, yellow, blue, lilac, green, orange, pink
 
 
-  document.onload = initialize();
+document.onload = initialize();
 
 var quill = new Quill('#note-1', {
   modules: {
@@ -132,7 +132,7 @@ function setColor() {
      h = checkTime(h);
      m = checkTime(m);
      document.getElementById("clock").innerHTML = h + ":" + m ;
-     var t = setTimeout(startTime, 500);
+     var t = setTimeout(startTime, 1000);
 
      getDate();
 
@@ -149,17 +149,16 @@ function setColor() {
     var x = document.getElementById(i);
     var y = document.getElementById(b);
 
-    if(x.style.transform === "translateY(-20em)") {
-        x.style.transform = "translateY(1em)";
+    if(x.style.transform === "translateY(-18em)") {
+        x.style.transform = "translateY(2em)";
         y.style.boxShadow = "0 0 0 white";
         y.style.background = "#616161";
 
 
         } else {
-          x.style.transform = "translateY(-20em)";
+          x.style.transform = "translateY(-18em)";
           y.style.boxShadow = "0 0 .5em white";
           y.style.background = "white";
-
         }
   }
 
