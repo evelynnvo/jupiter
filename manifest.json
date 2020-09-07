@@ -1,5 +1,5 @@
 {
-  "name": "New Tab thing",
+  "name": "jupiter",
   "version": "0.1",
   "description": "A minimalist new-tab override extension that tells the weather",
   "manifest_version": 2,

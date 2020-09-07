@@ -1,22 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;1,200;1,300&display=swap');
-* {
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,500;1,200;1,300;1,500&display=swap');
+
+*:not(p) {
   fill: #616161;
   color: #616161;
   font-family: Jost;
-  font-weight: 300;
   text-align: center;
 
 }
 
 body {
-  /* background: #e3b0af; */
   margin: 0;
   overflow: hidden;
 }
 
-
 .weather-container {
-  margin-top: 28vh; /*20em;*/
+  margin-top: 28vh; 
 }
 
 .icon {
@@ -29,6 +27,7 @@ body {
   margin-top: .5em;
   font-style: italic;
   font-size: 1.5em;
+  font-weight: 300;
   width: 15em;
 }
 
@@ -42,6 +41,7 @@ body {
 .date-message {
   margin-top: -.8em;
   font-size: 1.5em;
+  font-weight: 300;
 }
 
 .action-boxes-container {
@@ -87,14 +87,12 @@ body {
   overflow: hidden;
 }
 
-.note-box {
-  position: absolute;
+.note-box.ql-container.ql-bubble {
   background: white;
   width: 20em;
-  height: 25em;
-  margin-top: 2em;
-  border-radius: .8em;
-  transform: translateY(20em);
+  height: 20em;
+  margin-top: 20em;
+  border-radius: .8em .8em 0 0;
   transition: transform 1s;
   transition-timing-function: ease-in-out;
   left: 0;
@@ -102,32 +100,17 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 1.5em .5em;
-}
-
-textarea {
-  outline: none;
-  resize: none;
-  overflow: auto;
-  text-align: left;
-  border: none;
-  color: #242424;
   font-weight: 300;
-  font-size: 1.2em;
-  padding-bottom: 1em;
-  background: transparent;
-}
-
-
-::-webkit-input-placeholder {
-  font-style: italic;
 }
 
 ::-webkit-scrollbar {
   width: .3em;
+
 }
 
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: .2em;
   border-radius: .2em;
+  right: 20em;
   background: #616161;
 }
